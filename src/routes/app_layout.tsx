@@ -16,10 +16,9 @@ export default function Layout() {
           <Link to={`home`}>Популярное</Link>
           <Link to={`games`}>Магазин</Link>
         </div>
+        <img className="header__profile" src="images/avatar.svg"></img>
       </header>
-      <div id="detail">
-        <Outlet />
-      </div>
+      <Outlet />
     </div>
   )
 }

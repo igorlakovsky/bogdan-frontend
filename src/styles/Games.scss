@@ -1,0 +1,15 @@
+.games {
+  padding: 0px 136px;
+
+  &__title {
+    color: #ffffff;
+    font-weight: 700;
+    font-size: 26px;
+    margin: 32px 0px;
+  }
+
+  &__cards {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+  }
+}
