@@ -11,5 +11,35 @@
   &__cards {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
+    gap: 20px;
   }
+
+  &__card {
+    &__button {
+      width: 100%;
+    }
+  }
+}
+
+.card {
+  background-color: transparent;
+}
+
+.card-body {
+  padding: 10px 6px;
+}
+
+.card-img-top {
+  height: 150px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.card-title {
+  font-size: 14px;
+  color: #ffffff;
+}
+
+.card-text {
+  color: #ffffff;
 }

@@ -1,10 +1,22 @@
 import '../styles/Layout.scss'
+import Button from 'react-bootstrap/Button'
 
-import { Link, Outlet } from 'react-router-dom'
+import { Link, Outlet, useNavigate, useLocation } from 'react-router-dom'
 
-import React from 'react'
+import React, { useEffect } from 'react'
 
 export default function Layout() {
+  const location = useLocation()
+  const navigate = useNavigate()
+
+  useEffect(() => {
+    console.log(location)
+
+    if (location.pathname == '/') {
+      navigate('/home')
+    }
+  }, [])
+
   return (
     <div className="page-container">
       <header className="header">
@@ -16,7 +28,9 @@ export default function Layout() {
           <Link to={`home`}>Популярное</Link>
           <Link to={`games`}>Магазин</Link>
         </div>
-        <img className="header__profile" src="images/avatar.svg"></img>
+        <Button className="header__profile" href="./profile">
+          <img className="header__profile__img" src="images/avatar.svg"></img>
+        </Button>
       </header>
       <Outlet />
     </div>

@@ -52,5 +52,16 @@
   &__profile {
     height: 40px;
     margin-left: auto;
+    background-color: transparent !important;
+    padding: 0;
+    border: none;
+
+    img {
+      height: 100%;
+      width: 100%;
+    }
+
+    &::hover {
+    }
   }
 }
