@@ -1,66 +1,38 @@
 import '../styles/Games.scss'
 
+import axios from 'axios'
+
 import Button from 'react-bootstrap/Button'
 import Card from 'react-bootstrap/Card'
-import React, { useRef } from 'react'
+import React, { useState, useEffect } from 'react'
 
 interface Card {
-  id: number
+  game_id: number
   img: string
-  title: string
+  name: string
   text: string
 }
 
 export default function Games() {
-  const gamesData = useRef<Card[]>([
-    {
-      id: 1,
-      img: 'images/trend-card-1.png',
-      title: 'Assassin’s Creed Valhalla',
-      text: 'Ubisoft',
-    },
-    {
-      id: 1,
-      img: 'images/trend-card-1.png',
-      title: 'Assassin’s Creed Valhalla',
-      text: 'Ubisoft',
-    },
-    {
-      id: 1,
-      img: 'images/trend-card-1.png',
-      title: 'Assassin’s Creed Valhalla',
-      text: 'Ubisoft',
-    },
-    {
-      id: 1,
-      img: 'images/trend-card-1.png',
-      title: 'Assassin’s Creed Valhalla',
-      text: 'Ubisoft',
-    },
-    {
-      id: 1,
-      img: 'images/trend-card-1.png',
-      title: 'Assassin’s Creed Valhalla',
-      text: 'Ubisoft',
-    },
-    {
-      id: 1,
-      img: 'images/trend-card-1.png',
-      title: 'Assassin’s Creed Valhalla',
-      text: 'Ubisoft',
-    },
-  ])
+  const [gamesData, setGamesData] = useState<Card[]>([])
+
+  useEffect(() => {
+    axios.get('http://localhost:3001/games').then(function (response) {
+      setGamesData(response.data)
+      console.log(response.data)
+    })
+  }, [])
 
   return (
     <div className="games">
       <div className="games__title">Новые релизы</div>
       <div className="games__cards">
-        {gamesData.current.map((value) => {
+        {gamesData.map((value) => {
           return (
-            <Card key={value.id}>
+            <Card key={value.game_id}>
               <Card.Img variant="top" src="images/game-logo.jpg" />
               <Card.Body>
-                <Card.Title>{value.title}</Card.Title>
+                <Card.Title>{value.name}</Card.Title>
                 <Card.Text>{value.text}</Card.Text>
                 <Button variant="primary" className="games__card__button">
                   5000 руб

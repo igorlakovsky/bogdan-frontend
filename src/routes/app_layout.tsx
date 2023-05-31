@@ -10,8 +10,6 @@ export default function Layout() {
   const navigate = useNavigate()
 
   useEffect(() => {
-    console.log(location)
-
     if (location.pathname == '/') {
       navigate('/home')
     }
